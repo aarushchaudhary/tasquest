@@ -6,9 +6,22 @@
     <title>TasQuest - Level Up Your Productivity</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
-    <script src="./angular-1.8.2/angular.min.js"></script>
-    <script src="./angular-1.8.2/angular-route.js"></script>
+    <script src="./angular-1.8.2/angular.min.js" onerror="loadFallbackAngular()"></script>
+    <script src="./angular-1.8.2/angular-route.js" onerror="loadFallbackAngularRoute()"></script>
     <script src="js/app.js"></script>
+    <script>
+        function loadFallbackAngular() {
+            var script = document.createElement('script');
+            script.src = 'https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js';
+            document.head.appendChild(script);
+        }
+        
+        function loadFallbackAngularRoute() {
+            var script = document.createElement('script');
+            script.src = 'https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js';
+            document.head.appendChild(script);
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -25,7 +38,7 @@
             </span>
 
             <a href="#!/leaderboard">Leaderboard</a>
-            <a href="#!/login" class="logout">Logout</a>
+            <a href="" ng-click="logout()" class="logout">Logout</a>
         </nav>
     </header>
 
