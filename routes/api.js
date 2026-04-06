@@ -66,8 +66,14 @@ router.post('/addUser', async (req, res) => {
         if (error.code === 'ER_DUP_ENTRY') {
             return res.status(400).json({ success: false, message: 'Username already exists' });
         }
-        console.error("Add User Error: ", error);
-        return res.status(500).json({ success: false, message: 'Database error while adding user' });
+        console.error("Add User Error Code:", error.code);
+        console.error("Add User Error Message:", error.message);
+        console.error("Full Error:", error);
+        return res.status(500).json({ 
+            success: false, 
+            message: 'Database error while adding user',
+            error: error.message
+        });
     }
 });
 

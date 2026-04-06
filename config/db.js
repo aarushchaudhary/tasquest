@@ -12,7 +12,8 @@ const dbConfig = isProduction
         database: process.env.RAILWAY_DB_NAME,
         waitForConnections: true,
         connectionLimit: 10,
-        queueLimit: 0
+        queueLimit: 0,
+        ssl: 'require'
     }
     : {
         host: process.env.DB_HOST,
