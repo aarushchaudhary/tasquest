@@ -11,15 +11,5 @@
       "src": "/(.*)",
       "dest": "server.js"
     }
-  ],
-  "env": {
-    "ENVIRONMENT": "production",
-    "RAILWAY_DB_HOST": "@railway_db_host",
-    "RAILWAY_DB_USER": "@railway_db_user",
-    "RAILWAY_DB_PASSWORD": "@railway_db_password",
-    "RAILWAY_DB_PORT": "@railway_db_port",
-    "RAILWAY_DB_NAME": "@railway_db_name",
-    "ADMIN_USERNAME": "@admin_username",
-    "ADMIN_PASSWORD": "@admin_password"
-  }
+  ]
 }
