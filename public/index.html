@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tasQuestApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasQuest - Level Up Your Productivity</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="./angular-1.8.2/angular.min.js"></script>
+    <script src="./angular-1.8.2/angular-route.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>TasQuest ⚔️</h1>
+        <nav ng-show="isLoggedIn">
+            
+            <span ng-show="!isAdmin">
+                <a href="#!/dashboard">Dashboard</a>
+                <a href="#!/profile">Profile</a>
+            </span>
+            
+            <span ng-show="isAdmin">
+                <a href="#!/admin">Admin Panel</a>
+            </span>
+
+            <a href="#!/leaderboard">Leaderboard</a>
+            <a href="#!/login" class="logout">Logout</a>
+        </nav>
+    </header>
+
+    <main ng-view>
+        </main>
+
+    <footer>
+        <p>&copy; 2026 TasQuest. Complete tasks, earn XP.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div class="card">
+    <h2>Admin Control Panel</h2>
+    
+    <h3>Recruit New Adventurer</h3>
+    <form name="addUserForm" ng-submit="addUser()">
+        <input type="text" ng-model="newUser.username" placeholder="Adventurer Username" required>
+        <input type="password" ng-model="newUser.password" placeholder="Assign Password" required>
+        <button type="submit" ng-disabled="addUserForm.$invalid">Add User</button>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Active Adventurers</h3>
+    <div class="table-container">
+        <table class="quest-table">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Level</th>
+                <th>Action</th>
+            </tr>
+            <tr ng-repeat="user in users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.level }}</td>
+                <td>
+                    <button ng-click="removeUser(user)" 
+                            ng-class="{'btn-red': user.isBanished}" 
+                            class="complete-btn">
+                        {{ user.isBanished ? 'Banishing...' : 'Banish' }}
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

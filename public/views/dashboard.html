@@ -1,0 +1,38 @@
+<div class="dashboard">
+    <div class="stats-panel">
+        <h3>Welcome, {{ user.username }}!</h3>
+        <p>Level: {{ user.level }} | Total XP: <strong>{{ user.xp }}</strong></p>
+    </div>
+
+    <div class="card">
+        <h3>Add New Quest</h3>
+        <form name="taskForm" ng-submit="addTask()">
+            <input type="text" ng-model="newTask.name" placeholder="Quest Objective" required>
+            <input type="datetime-local" ng-model="newTask.deadline" required>
+            <button type="submit" ng-disabled="taskForm.$invalid">Add Quest</button>
+        </form>
+    </div>
+
+    <h3>Active Quests</h3>
+    <div class="table-container">
+        <table class="quest-table">
+            <tr>
+                <th>Quest</th>
+                <th>Deadline</th>
+                <th>Action</th>
+            </tr>
+            <tr ng-repeat="task in user.tasks" ng-class="{'task-done': task.completed}">
+                <td>{{ task.name }}</td>
+                <td>{{ task.deadline | date:'medium' }}</td>
+                <td>
+                    <button ng-click="completeTask(task)" 
+                            ng-class="{'btn-green': task.completed}"
+                            ng-disabled="task.completed"
+                            class="complete-btn">
+                        {{ task.completed ? 'Done!' : 'Complete' }}
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

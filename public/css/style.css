@@ -1,0 +1,200 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #e0f8d0;
+    color: #081820;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #88c070;
+    border-bottom: 4px solid #081820;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: #081820;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+header nav {
+    margin-top: 15px;
+}
+
+header nav a {
+    color: #081820;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: bold;
+    background-color: #e0f8d0;
+    padding: 5px 10px;
+    border: 2px solid #081820;
+}
+
+header nav a:hover {
+    background-color: #081820;
+    color: #e0f8d0;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card, .stats-panel {
+    background-color: #88c070;
+    border: 4px solid #081820;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.login-card {
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+fieldset {
+    border: 2px dashed #081820;
+    padding: 15px;
+}
+
+legend {
+    color: #081820;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #88c070;
+    padding: 0 5px;
+}
+
+input[type="text"], input[type="password"], input[type="datetime-local"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #e0f8d0;
+    color: #081820;
+    border: 2px solid #081820;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button {
+    background-color: #e0f8d0;
+    color: #081820;
+    padding: 10px 20px;
+    border: 4px solid #081820;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #081820;
+    color: #e0f8d0;
+}
+
+button:disabled {
+    background-color: #88c070;
+    border-color: #346856;
+    color: #346856;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    background-color: #88c070;
+    color: #346856;
+}
+
+.quest-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #e0f8d0;
+}
+
+.quest-table th, .quest-table td {
+    border: 2px solid #081820;
+    padding: 10px;
+    text-align: left;
+}
+
+.quest-table th {
+    background-color: #346856;
+    color: #e0f8d0;
+    text-transform: uppercase;
+}
+
+.complete-btn {
+    border-width: 2px;
+    padding: 5px 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 4px solid #081820;
+    background-color: #88c070;
+    margin-top: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn-green, .btn-green:disabled {
+    background-color: #4caf50 !important;
+    color: #081820 !important;
+    border-color: #081820 !important;
+    cursor: default;
+}
+
+/* Red for banishing users */
+.btn-red {
+    background-color: #e52521 !important;
+    color: #e0f8d0 !important;
+    border-color: #081820 !important;
+}
+
+.task-done td {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    header nav {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    header nav a {
+        display: block;
+        margin: 0;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .card, .stats-panel {
+        padding: 10px;
+    }
+
+    input[type="text"], input[type="password"], input[type="datetime-local"] {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    button {
+        width: 100%;
+        margin-top: 5px;
+    }
+}

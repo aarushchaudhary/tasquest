@@ -1,0 +1,15 @@
+<div class="card">
+    <h2>Hall of Fame</h2>
+    <table class="quest-table">
+        <tr>
+            <th>Rank</th>
+            <th>Adventurer</th>
+            <th>Total XP</th>
+        </tr>
+        <tr ng-repeat="player in players | orderBy:'-xp'">
+            <td>#{{ $index + 1 }}</td>
+            <td>{{ player.username }}</td>
+            <td>{{ player.xp }} XP</td>
+        </tr>
+    </table>
+</div>
