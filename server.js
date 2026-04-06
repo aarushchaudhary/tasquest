@@ -22,7 +22,12 @@ app.use(express.static('public'));
 const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
+// SPA fallback: only serve index.html for non-file routes
 app.get('*', (req, res) => {
+    // Don't serve index.html for files with extensions like .js, .css, .json
+    if (req.url.includes('.')) {
+        return res.status(404).send('Not found');
+    }
     res.sendFile(__dirname + '/public/index.html');
 });
 
