@@ -11,9 +11,10 @@ const dbConfig = isProduction
         port: parseInt(process.env.RAILWAY_DB_PORT) || 3306,
         database: process.env.RAILWAY_DB_NAME,
         waitForConnections: true,
-        connectionLimit: 10,
+        connectionLimit: 5,
         queueLimit: 0,
-        ssl: 'require'
+        enableKeepAlive: true,
+        keepAliveInitialDelayMs: 0
     }
     : {
         host: process.env.DB_HOST,
