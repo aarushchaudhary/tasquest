@@ -294,6 +294,17 @@ app.controller(
       }
     };
 
+    $scope.getTasksSorted = function () {
+      if (!$scope.user.tasks) return [];
+      var tasks = $scope.user.tasks.slice();
+      return tasks.sort(function (a, b) {
+        if (a.completed === b.completed) {
+          return 0;
+        }
+        return a.completed ? 1 : -1;
+      });
+    };
+
     $scope.completeTask = function (task) {
       if (task.completed) return;
 

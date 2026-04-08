@@ -21,7 +21,7 @@
                 <th>Deadline</th>
                 <th>Action</th>
             </tr>
-            <tr ng-repeat="task in user.tasks" ng-class="{'task-done': task.completed}">
+            <tr ng-repeat="task in getTasksSorted()" ng-class="{'task-done': task.completed}">
                 <td>{{ task.name }}</td>
                 <td>{{ task.deadline | date:'medium' }}</td>
                 <td>
