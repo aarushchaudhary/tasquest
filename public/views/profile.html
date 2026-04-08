@@ -6,7 +6,7 @@
     
     <div class="current-badge-display">
         <h3>Current Rank</h3>
-        <img ng-src="{{ currentBadge.image }}" class="badge-icon-large" alt="{{ currentBadge.name }}">
+        <img ng-if="currentBadge.image" ng-src="{{ currentBadge.image }}" class="badge-icon-large" alt="{{ currentBadge.name }}">
         <p><strong>{{ currentBadge.name }}</strong></p>
     </div>
 </div>
