@@ -3,4 +3,24 @@
     <p><strong>Name:</strong> {{ user.username }}</p>
     <p><strong>Current Level:</strong> {{ user.level }}</p>
     <p><strong>Experience Points:</strong> {{ user.xp }}</p>
+    
+    <div class="current-badge-display">
+        <h3>Current Rank</h3>
+        <img ng-src="{{ currentBadge.image }}" class="badge-icon-large" alt="{{ currentBadge.name }}">
+        <p><strong>{{ currentBadge.name }}</strong></p>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Unlocked Achievements</h2>
+    <div ng-if="unlockedBadges.length === 0">
+        <p>You haven't unlocked any badges yet. Reach 500 XP to get your first!</p>
+    </div>
+    
+    <div class="badge-showcase">
+        <div class="badge-item" ng-repeat="badge in unlockedBadges">
+            <img ng-src="{{ badge.image }}" class="badge-icon-medium" alt="{{ badge.name }}">
+            <p>{{ badge.name }}</p>
+        </div>
+    </div>
 </div>

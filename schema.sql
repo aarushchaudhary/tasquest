@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS tasks (
     name VARCHAR(255) NOT NULL,
     deadline DATETIME NOT NULL,
     completed TINYINT(1) DEFAULT 0,
+    penalty_applied TINYINT(1) DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );

@@ -4,11 +4,18 @@
         <tr>
             <th>Rank</th>
             <th>Adventurer</th>
+            <th>Badge</th>
             <th>Total XP</th>
         </tr>
         <tr ng-repeat="player in players | orderBy:'-xp'">
             <td>#{{ $index + 1 }}</td>
             <td>{{ player.username }}</td>
+            <td style="text-align: center;">
+                <div>
+                    <img ng-if="player.badge.image" ng-src="{{ player.badge.image }}" class="badge-icon-small" alt="{{ player.badge.name }}" title="{{ player.badge.name }}">
+                    <p style="margin: 5px 0; font-weight: bold;">{{ player.badge.name }}</p>
+                </div>
+            </td>
             <td>{{ player.xp }} XP</td>
         </tr>
     </table>
