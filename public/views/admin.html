@@ -16,13 +16,13 @@
             <tr>
                 <th>ID</th>
                 <th>Username</th>
-                <th>Level</th>
+                <th>Badge</th>
                 <th>Action</th>
             </tr>
             <tr ng-repeat="user in users">
                 <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
-                <td>{{ user.level }}</td>
+                <td>{{ user.badge.name }}</td>
                 <td>
                     <button ng-click="removeUser(user)" 
                             ng-class="{'btn-red': user.isBanished}" 

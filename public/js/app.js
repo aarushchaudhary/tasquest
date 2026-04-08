@@ -142,7 +142,7 @@ app.controller(
 
 app.controller(
   "AdminCtrl",
-  function ($scope, GameService, $location, $rootScope, $timeout, $http) {
+  function ($scope, GameService, BadgeService, $location, $rootScope, $timeout, $http) {
     if (!$rootScope.isAdmin) {
       $location.path("/login");
       return;
@@ -155,7 +155,10 @@ app.controller(
       .get("/api/getUsers")
       .then(function (response) {
         if (response.data.success) {
-          GameService.allUsers = response.data.users;
+          GameService.allUsers = response.data.users.map(function (user) {
+            user.badge = BadgeService.getCurrentBadge(user.xp);
+            return user;
+          });
           $scope.users = GameService.allUsers;
         }
       })
@@ -172,13 +175,15 @@ app.controller(
           })
           .then(function (response) {
             if (response.data.success) {
-              $scope.users.push({
+              var newUserObj = {
                 id: response.data.userId,
                 username: $scope.newUser.username,
                 xp: 0,
                 level: 1,
                 tasks: [],
-              });
+              };
+              newUserObj.badge = BadgeService.getCurrentBadge(newUserObj.xp);
+              $scope.users.push(newUserObj);
               $scope.newUser = {};
               alert("New Adventurer Recruited!");
             } else {
@@ -223,13 +228,14 @@ app.controller(
 
 app.controller(
   "DashboardCtrl",
-  function ($scope, GameService, $location, $rootScope, $http) {
+  function ($scope, GameService, BadgeService, $location, $rootScope, $http) {
     if (!$rootScope.isLoggedIn || $rootScope.isAdmin) {
       $location.path("/login");
       return;
     }
 
     $scope.user = GameService.currentUser;
+    $scope.currentBadge = BadgeService.getCurrentBadge($scope.user.xp);
     $scope.newTask = {};
 
     $scope.addTask = function () {
