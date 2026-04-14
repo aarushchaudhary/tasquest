@@ -122,15 +122,36 @@ router.post('/addTask', async (req, res) => {
             return res.status(400).json({ success: false, message: 'User ID, name, and deadline required' });
         }
 
+        const deadlineDate = new Date(deadline);
+        const now = new Date();
+        const isPastDeadline = deadlineDate < now;
+
         const [result] = await db.execute(
-            'INSERT INTO tasks (user_id, name, deadline, completed) VALUES (?, ?, ?, 0)',
-            [userId, name, deadline]
+            'INSERT INTO tasks (user_id, name, deadline, completed, penalty_applied) VALUES (?, ?, ?, 0, ?)',
+            [userId, name, deadline, isPastDeadline ? 1 : 0]
         );
+
+        let penaltyApplied = false;
+        let message = 'Task added successfully';
+
+        if (isPastDeadline) {
+            const PENALTY = -20;
+            const [xpResult] = await db.execute(
+                'UPDATE users SET xp = xp + ? WHERE id = ?',
+                [PENALTY, userId]
+            );
+
+            if (xpResult.affectedRows > 0) {
+                penaltyApplied = true;
+                message = 'Task added! Penalty of 20 XP applied (past deadline).';
+            }
+        }
 
         return res.json({ 
             success: true, 
-            message: 'Task added successfully',
-            taskId: result.insertId
+            message: message,
+            taskId: result.insertId,
+            penaltyApplied: penaltyApplied
         });
 
     } catch (error) {

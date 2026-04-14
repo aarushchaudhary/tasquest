@@ -281,11 +281,25 @@ app.controller(
               });
               $scope.newTask = {};
 
+              if (response.data.penaltyApplied) {
+                $http
+                  .get("/api/getUsers")
+                  .then(function (usersResponse) {
+                    if (usersResponse.data.success) {
+                      var updatedUser = usersResponse.data.users.find(u => u.id === $scope.user.id);
+                      if (updatedUser) {
+                        $scope.user.xp = updatedUser.xp;
+                        $scope.user.level = updatedUser.level;
+                      }
+                    }
+                  });
+              }
+
               localStorage.setItem(
                 "tasquest_user",
                 JSON.stringify($scope.user),
               );
-              alert("Quest Added!");
+              alert(response.data.message);
             } else {
               alert("Error: " + response.data.message);
             }
